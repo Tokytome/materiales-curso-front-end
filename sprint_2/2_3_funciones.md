@@ -28,13 +28,81 @@ Por último las funciones son una forma de abstraer la complejidad de un código
 ## ¿En qué casos se utiliza?
 
 - Para abstraer la lógica de nuestro código, dejando algo más sencillo de leer:
-  - Si tenemos un código que obtiene unos datos de un servidor, los ordena alfabeticamente, les da una estructura y los muestra, podemos crear todo el código en una función. Crearíamos el código dentro de una función y la ejecutaríaamos en la parte del código necesaria. Si utilizamos un nombre como `showDataAlphabetically` quedaría bastante claro y permitiría entenderlo sin necesidad de consultar el código interno de la función.
+	- Si tenemos un código que obtiene unos datos de un servidor, los ordena alfabeticamente, les da una estructura y los muestra, podemos crear todo el código en una función. Crearíamos el código dentro de una función y la ejecutaríaamos en la parte del código necesaria. Si utilizamos un nombre como `showDataAlphabetically` quedaría bastante claro y permitiría entenderlo sin necesidad de consultar el código interno de la función.
 
 - Para reutilizar código:
-  - Si tenemos un código que convierte la primera letra de un texto a mayúsculas y vamos a usar ese código en varias partes de nuestro programa, creamos una función y ejecutamos la función en cada uno de los sitios necesarios
-  - Si queremos añadir varias clases a diferentes elementos HTML en función de la medida de la página web podemos crear una función y utilizarla en cada uno de ellos
-  - Si queremos enviar datos a un servidor, la mayoría de las veces es muy parecido y sólo cambian unos datos. Podríamos hacer una función y reutilizarla y usar distintos datos en cada una mediante los parámetros de la función (que veremos durante esta sesión)
+	- Si tenemos un código que convierte la primera letra de un texto a mayúsculas y vamos a usar ese código en varias partes de nuestro programa, creamos una función y ejecutamos la función en cada uno de los sitios necesarios
+	- Si queremos añadir varias clases a diferentes elementos HTML en función de la medida de la página web podemos crear una función y utilizarla en cada uno de ellos
+	- Si queremos enviar datos a un servidor, la mayoría de las veces es muy parecido y sólo cambian unos datos. Podríamos hacer una función y reutilizarla y usar distintos datos en cada una mediante los parámetros de la función (que veremos durante esta sesión)
 
+
+## Funciones
+Se utilizan para abstraer la lógica, dejando un código más fácil de entender, y para reutilizar el código en distintas partes de nuestro programa.
+
+### Declaración y uso de funciones
+Para utilizar una función debemos declararla en algún sitio de nuestro código
+
+La estructura para declarar una función es
+
+```javascript
+function nombre(parámetros) {
+	/* código */
+}
+```
+
+Para utilizar una función simplemente usamos el nombre de la función seguida de paréntesis donde pasaremos los parámetros o argumentos `nombreFuncion(argumentos)`.
+
+Se pueden crear funciones sin nombre, estas funciones se llaman _funciones anónimas_ y su estructura es
+
+```javascript
+function (parámetros) {
+	/* código */
+}
+```
+
+Estas funciones se suelen emplear cuando las pasamos como argumento o cuando se las asignamos a una variable:
+
+```javascript
+var miFuncion = function (parámetros) {
+	/* código */
+}
+```
+
+### Parámetros y valores de retorno
+
+Los parámetros son datos que definimos en una función y que, a la hora de ejecutarla, serán sustituidas por los argumentos que le pasemos.
+
+Las funciones pueden tener 0, 1 o más parámetros separados por comas.
+
+Una función puede devolver un valor utilizando la palabra clave `return` seguida del valor que queremos devolver. Si queremos devolver una variable `result`, utilizaremos `return result;` en el código.
+
+```javascript
+function nombre(parámetros) {
+	var variable = '0';
+
+	return variable;
+}
+
+var operacion = nombre();
+```
+
+Por defecto, si en una función no asignamos un valor de retorno usando `return`, la función devolverá el valor `undefined`
+
+### En valor `undefined`
+El valor _undefined_ en JavaScript indica que una variable ha sido declarada pero no posee ningún valor, en este caso determina que la función no tiene asignado ningún valor de retorno y por eso devuelve `undefined`.
+
+Cuando ejecutamos un `return` dentro de una función, termina la ejecución de la función. Todo el código que se fuese a ejecutar después de ese return será ignorado, será como si no existiese. Por tanto, debemos evitar escribir líneas de código después de un `return`.
+
+### Ámbito de las variables
+Se pueden ejecutar funciones dentro de otras funciones.
+
+Se pueden pasar funciones como argumentos para otras funciones, devolver funciones como valores de otras funciones y guardar funciones en variables.
+
+Una variable creada dentro del cuerpo de una función sólo será accesible desde dentro de esa función.
+
+A esto se le llama ámbito (en inglés, _scope_) y permite que no se generen conflictos entre funciones con variables que tienen un nombre idéntico.
+
+Desde dentro de una función podemos utilizar las variables que se hayan definido fuera de cualquier función.
 
 ## Recursos externos
 
@@ -53,26 +121,6 @@ Si prefieres un recurso escrito para aprender, aquí tienes la explicación de l
 
 - [Funciones](http://librosweb.es/libro/javascript/capitulo_4/funciones.html)
 - [Ámbito de las variables](http://librosweb.es/libro/javascript/capitulo_4/ambito_de_las_variables.html)
-
-
-## Resumen de la sesión
-
-- Funciones
-  - Se utilizan para abstraer la lógica, dejando un código más fácil de entender, y para reutilizar el código en distintas partes de nuestro programa.
-  - Para utilizar una función debemos declararla en algún sitio de nuestro código
-  - La estructura para declarar una función es `function nombre(parámetros) { /* código */ }`
-  - Para utilizar una función simplemente usamos el nombre de la función seguida de paréntesis donde pasaremos los argumentos `nombreFuncion(argumentos)`
-  - Los parámetros son datos que definimos en una función y que, a la hora de ejecutarla, serán sustituidas por los argumentos que le pasemos
-  - Las funciones pueden tener 0, 1 o más parámetros separados por comas
-  - Una función puede devolver un valor utilizando la palabra clave `return` seguida del valor que queremos devolver. Si queremos devolver una variable `result`, utilizaremos `return result;` en el código.
-  - Por defecto, si en una función no asignamos un valor de retorno usando `return`, la función devolverá el valor `undefined`
-  - El valor _undefined_ en JavaScript indica que una variable ha sido declarada pero no posee ningún valor, en este caso determina que la función no tiene asignado ningún valor de retorno y por eso devuelve `undefined`.
-  - Cuando ejecutamos un `return` dentro de una función, termina la ejecución de la función. Todo el código que se fuese a ejecutar después de ese return será ignorado, será como si no existiese. Por tanto, debemos evitar escribir líneas de código después de un `return`
-  - Se pueden ejecutar funciones dentro de otras funciones
-  - Se pueden pasar funciones como argumentos para otras funciones, devolver funciones como valores de otras funciones y guardar funciones en variables
-  - Se pueden crear funciones sin nombre, estas funciones se llaman _funciones anónimas_ y su estructura es `function (parámetros) { /* código */}`. Estas funciones se suelen emplear cuando las pasamos como argumento o cuando se las asignamos a una variable
-  - Una variable creada dentro del cuerpo de una función sólo será accesible desde dentro de esa función. A esto se le llama ámbito (en inglés, _scope_) y permite que no se generen conflictos entre funciones con variables que tienen un nombre idéntico
-  - Desde dentro de una función podemos utilizar las variables que se hayan definido fuera de cualquier función
 
 
 ## Ejercicios
